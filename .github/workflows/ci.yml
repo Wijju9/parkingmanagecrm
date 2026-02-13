@@ -3,18 +3,23 @@ name: CI
 on:
   pull_request:
   push:
-    branches: [main, development]
+    branches: [main]
 
 jobs:
-  build:
+  validate-static-site:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: npm
-      - name: Install dependencies
-        run: npm ci
-      - name: Build Angular app
-        run: npm run build
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate required files
+        run: |
+          test -f index.html
+          test -f styles.css
+          test -f app.js
+
+      - name: Check HTML wiring
+        run: |
+          grep -q 'link rel="stylesheet" href="styles.css"' index.html
+          grep -q 'script src="app.js"' index.html
+          grep -q 'Vehicle Parking Booking Management' index.html

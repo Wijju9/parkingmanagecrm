@@ -1,34 +1,41 @@
-# ParkingManageCRM (Angular)
+# ParkWise – Vehicle Parking Booking Management
 
-This repository has been converted to an Angular application with a **login-first flow**.
+A modern, responsive parking booking CRM landing/dashboard inspired by the provided Dribbble concept.
 
-## App flow
+## Features
 
-1. `/login` – user signs in.
-2. `/dashboard` – user sees parking/valet management dashboard with sidebar navigation.
+- Sidebar navigation with upgrade prompt.
+- Booking search form (location, vehicle type, slot window).
+- KPI cards for total slots, occupancy, revenue, and EV chargers.
+- Dynamic booking activity and occupancy-by-zone sections.
+- Mobile-friendly responsive layout.
 
-## Local development
+## Run locally
 
-```bash
-npm install
-npm start
-```
-
-App runs on `http://localhost:4200`.
-
-## Build
+Because this is a dependency-free static app, you can run it with any static server:
 
 ```bash
-npm run build
+python3 -m http.server 4173
 ```
 
-## CI/CD
+Then open `http://localhost:4173`.
 
-- **CI** runs on PRs and pushes to `development` and `main`.
-- **CD** deploys production build to GitHub Pages when `main` is updated.
+## CI/CD setup
 
-## Publish to GitHub Pages
+### CI (`.github/workflows/ci.yml`)
 
-1. Push to GitHub.
-2. In Settings → Pages, select **GitHub Actions** as source.
-3. Merge `development` into `main` to trigger deploy workflow.
+On pushes to `main` and pull requests:
+- Verifies that `index.html`, `styles.css`, and `app.js` exist.
+- Checks that HTML is wired to stylesheet/script and contains expected dashboard title text.
+
+### CD (`.github/workflows/deploy-pages.yml`)
+
+On pushes to `main` (and manual dispatch):
+- Builds a Pages artifact from repository root.
+- Deploys the static site to GitHub Pages using official Pages actions.
+
+## Publishing checklist
+
+1. Push this repository to GitHub.
+2. In repository settings, ensure **Pages** source is set to **GitHub Actions**.
+3. Push to `main`; deployment URL will appear in the "Deploy static site to GitHub Pages" workflow run.
