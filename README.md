@@ -1,15 +1,18 @@
-# ValetFlow CRM Dashboard
+# ParkWise – Vehicle Parking Booking Management
 
-Behance-inspired parking/valet management web UI with operational navigation and dashboard sections.
+A modern, responsive parking booking CRM landing/dashboard inspired by the provided Dribbble concept.
 
-## What's included
+## Features
 
-- Modern admin layout with left rail navigation and top-level dashboard actions.
-- Dashboard KPIs, booking request table, and zone utilization progress visualization.
-- Multi-section navigation (`Dashboard`, `Bookings`, `Valet Team`, `Reports`, `Settings`) with active-state switching.
-- Responsive static architecture (no build step required).
+- Sidebar navigation with upgrade prompt.
+- Booking search form (location, vehicle type, slot window).
+- KPI cards for total slots, occupancy, revenue, and EV chargers.
+- Dynamic booking activity and occupancy-by-zone sections.
+- Mobile-friendly responsive layout.
 
 ## Run locally
+
+Because this is a dependency-free static app, you can run it with any static server:
 
 ```bash
 python3 -m http.server 4173
@@ -17,27 +20,22 @@ python3 -m http.server 4173
 
 Then open `http://localhost:4173`.
 
-## CI/CD
+## CI/CD setup
 
-### CI: `.github/workflows/ci.yml`
+### CI (`.github/workflows/ci.yml`)
 
-Runs on pull requests and pushes to `main` and validates:
-- required static files exist
-- HTML references stylesheet + script
-- dashboard title text exists
+On pushes to `main` and pull requests:
+- Verifies that `index.html`, `styles.css`, and `app.js` exist.
+- Checks that HTML is wired to stylesheet/script and contains expected dashboard title text.
 
-### CD: `.github/workflows/deploy-pages.yml`
+### CD (`.github/workflows/deploy-pages.yml`)
 
-Runs on `main` push (or manual dispatch) and deploys repository root to GitHub Pages.
+On pushes to `main` (and manual dispatch):
+- Builds a Pages artifact from repository root.
+- Deploys the static site to GitHub Pages using official Pages actions.
 
-## Publish steps
+## Publishing checklist
 
-1. Push repository to GitHub.
-2. In **Settings → Pages**, choose **GitHub Actions**.
-3. Push to `main` and wait for Pages deployment workflow to complete.
-
-
-## Branching flow
-
-- Use `development` as the integration branch for feature PRs.
-- Merge `development` into `main` for production GitHub Pages releases.
+1. Push this repository to GitHub.
+2. In repository settings, ensure **Pages** source is set to **GitHub Actions**.
+3. Push to `main`; deployment URL will appear in the "Deploy static site to GitHub Pages" workflow run.

@@ -3,7 +3,7 @@ name: CI
 on:
   pull_request:
   push:
-    branches: [main, development]
+    branches: [main]
 
 jobs:
   validate-static-site:
@@ -22,4 +22,4 @@ jobs:
         run: |
           grep -q 'link rel="stylesheet" href="styles.css"' index.html
           grep -q 'script src="app.js"' index.html
-          grep -q 'ValetFlow CRM | Parking & Valet Dashboard' index.html
+          grep -q 'Vehicle Parking Booking Management' index.html
