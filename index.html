@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ValetFlow CRM | Parking & Valet Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <span class="brand-dot"></span>
+          <div>
+            <h1>ValetFlow</h1>
+            <p>Operations Command</p>
+          </div>
+        </div>
+
+        <nav id="side-nav" class="side-nav" aria-label="Main navigation"></nav>
+
+        <section class="sidebar-card">
+          <p class="label">Live Queue</p>
+          <h2>26 Vehicles</h2>
+          <p class="muted">Avg. handoff time: 3m 48s</p>
+        </section>
+      </aside>
+
+      <main class="workspace">
+        <header class="topbar">
+          <div>
+            <p class="muted">Good afternoon, Operations Lead</p>
+            <h2 id="view-title">Dashboard Overview</h2>
+          </div>
+          <div class="topbar-actions">
+            <button class="chip">Today</button>
+            <button class="chip">Downtown Hub</button>
+            <button class="primary">+ Add Booking</button>
+          </div>
+        </header>
+
+        <section class="subnav-wrap">
+          <nav id="sub-nav" class="sub-nav" aria-label="Dashboard sections"></nav>
+        </section>
+
+        <section id="view-root" class="view-root"></section>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
